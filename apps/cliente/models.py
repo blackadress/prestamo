@@ -6,7 +6,7 @@ class Cliente(models.Model):
     nombres = models.CharField(max_length=50)
     apPaterno = models.CharField(max_length=30)
     apMaterno = models.CharField(max_length=30)
-    dni = models.CharField(max_length=8)
+    dni = models.CharField(max_length=8, unique=True)
     activo = models.BooleanField(default=False)
     fechaIngreso = models.DateTimeField(auto_now_add=True)
     fechaModificacion = models.DateTimeField(auto_now=True)

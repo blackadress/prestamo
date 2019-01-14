@@ -4,5 +4,7 @@ from django.db import models
 
 class Caja(models.Model):
     nombre = models.CharField(max_length=30)
-    monto = models.IntegerField()
+    fecha = models.DateTimeField(auto_now_add=True)
+    saldo = models.IntegerField()
+    activo = models.BooleanField(default=True)
     

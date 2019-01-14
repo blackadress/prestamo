@@ -12,10 +12,11 @@ class Prestamo(models.Model):
     monto = models.IntegerField()
     estado = models.IntegerField(default=1)
     aprobado = models.BooleanField(default=False)
+    activo = models.BooleanField(default=True)
     supervisor = models.ForeignKey(Empleado, related_name='supervisor', on_delete=models.CASCADE)
-    empleado = models.ForeignKey(Empleado, related_name='empleado', on_delete=models.CASCADE)
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cajero = models.ForeignKey(Empleado, related_name='cajero', on_delete=models.CASCADE)
     caja = models.ForeignKey(Caja, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
 class Cobro(models.Model):
     fechaCreacion = models.DateTimeField(auto_now_add=True)

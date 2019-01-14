@@ -11,4 +11,5 @@ class Ruta(models.Model):
     fechaCreacion = models.DateTimeField(auto_now_add=True)
     fechaModificacion = models.DateTimeField(auto_now=True)
     empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
+    activo = models.BooleanField(default=True)
     clientes = models.ManyToManyField(Cliente)
