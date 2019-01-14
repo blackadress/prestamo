@@ -31,7 +31,12 @@
                 <input type="number" name="longitud" id="longitud" class="form-control"  disabled>
             </div>
         </div>
+        <div class="col-md-12" id="mapa" style="position: relative; overflow: hidden; height: 400px;">
+        </div>
     </form>
+
 </div>
+<script src="{% static 'js/google-maps/clienteNuevo.js' %}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA94LBsliF6TX_7XT76lfJAopVP_h2RkkU&callback=initMap" ></script>
 
 {% endblock %}
