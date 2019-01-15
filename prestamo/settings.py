@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'prestamo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql_cymysql',
+        'ENGINE': 'mysql.connector.django',
         'NAME': 'prestamos',
         'USER': 'prestamos',
         'PASSWORD': 'prestamos',
