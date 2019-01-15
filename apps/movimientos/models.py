@@ -7,10 +7,17 @@ from apps.caja.models import Caja
 # Create your models here.
 
 class Prestamo(models.Model):
+    ESTADOS_PRESTAMOS = (
+        ('1', 'Creado'),
+        ('2', 'Aprobado'),
+        ('3', 'Salida de caja'),
+        ('4', 'Por cobrar'),
+        ('5', 'Cobrado')
+    )
     fechaCreacion = models.DateTimeField(auto_now_add=True)
     fechaModificacion = models.DateTimeField(auto_now=True)
     monto = models.IntegerField()
-    estado = models.IntegerField(default=1)
+    estado = models.CharField(choices=ESTADOS_PRESTAMOS, max_length=10, default='1')
     aprobado = models.BooleanField(default=False)
     activo = models.BooleanField(default=True)
     supervisor = models.ForeignKey(Empleado, related_name='supervisor', on_delete=models.CASCADE)

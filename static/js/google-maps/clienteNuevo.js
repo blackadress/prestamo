@@ -1,4 +1,5 @@
 var mapa, infoWindow, marker;
+const csrfmiddlewaretoken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
 
 function initMap() {
 	mapa = new google.maps.Map(document.getElementById('mapa'), {
@@ -83,8 +84,10 @@ botonGuardar.addEventListener('click', () => {
 
 	// let form = document.getElementsByTagName('form')[0];
 
-	// nuevoClientePOST('/clientes/api-nuevo/', data);
-	nuevoClienteJQuery('/clientes/api-nuevo/', data);
+	nuevoClientePOST('/clientes/api-nuevo/', data);
+	
+	// USANDO JQUERY
+	// nuevoClienteJQuery('/clientes/api-nuevo/', data);
 
 });
 
@@ -92,23 +95,27 @@ function nuevoClientePOST(url, data) {
 	let request = new XMLHttpRequest();
 	request.open('POST', url, true);
 	request.setRequestHeader('X-CSRFToken', csrfmiddlewaretoken);
-	// request.setRequestHeader('Content-Type', 'aplication/json')
-	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-	request.send(JSON.stringify({data: data}));
+	request.send(JSON.stringify(data));
+
+	// redireccionamiento luego de mangdar el request.POST
+	window.location.href = "/clientes/listar/"
 }
 
-function nuevoClienteJQuery(url, data) {
-	$.ajax({
-		type: 'POST',
-		dataType: 'json',
-		url: url,
-		data: {
-			'csrfmiddlewaretoken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
-			'data': JSON.stringify(data)
-		},
-		success: function() {
-			console.log('exito');
-		},
 
-	})
-}
+// VERSION USANDO JQUERY
+
+// function nuevoClienteJQuery(url, data) {
+// 	$.ajax({
+// 		type: 'POST',
+// 		dataType: 'json',
+// 		url: url,
+// 		data: {
+// 			'csrfmiddlewaretoken': csrfmiddlewaretoken,
+// 			'data': JSON.stringify(data)
+// 		},
+// 		success: function() {
+// 			console.log('exito');
+// 		},
+
+// 	})
+// }

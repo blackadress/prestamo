@@ -11,4 +11,5 @@ urlpatterns = [
     
     # SERVICIOS
     path('api-nuevo/', views.clienteNuevoServicio, name='nuevoServicio'),
+    path('api-listar/', views.clienteListarServicio, name='listarServicio')
 ]

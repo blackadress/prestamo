@@ -6,6 +6,10 @@ app_name = 'movimientos'
 
 urlpatterns = [
     # PRESTAMOS
+    # PRESTAMOS VISTAS
     path('prestamo/nuevo/', views.prestamoNuevoVista, name='prestamoNuevoVista'),
-    path('prestamo/listar/', views.prestamoListarVista, name='prestamoListarVista')
+    path('prestamo/listar/', views.prestamoListarVista, name='prestamoListarVista'),
+
+    #PRESTAMOS SERVICIOS
+    path('prestamo/api-nuevo/', views.prestamoNuevoServicio, name='prestamoNuevoServicio')
 ]

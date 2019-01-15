@@ -13,3 +13,10 @@ class Cliente(models.Model):
     fechaModificacion = models.DateTimeField(auto_now=True)
     latitud = models.CharField(max_length=25)
     longitud = models.CharField(max_length=25)
+
+    def __str__(self):
+        return '%s %s %s' % (self.nombres, self.apPaterno, self.apPaterno)
+
+    @property
+    def nombreCompleto(self):
+        return '%s %s %s' % (self.nombres, self.apPaterno, self.apPaterno)
