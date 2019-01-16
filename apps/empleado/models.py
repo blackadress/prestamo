@@ -15,4 +15,5 @@ class Empleado(models.Model):
     apMaterno = models.CharField(max_length=30)
     dni = models.CharField(max_length=8)
     rol = models.CharField(max_length=15, choices=ROLES_OPCIONES)
+    activo = models.BooleanField(default=True)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)

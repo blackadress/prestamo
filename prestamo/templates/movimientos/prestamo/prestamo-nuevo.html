@@ -7,26 +7,42 @@
 
 <div class="col-lg-12 col-md-12 col-xs-12">
 	<form role='form' method="POST">
+		<div class="col-lg-6 col-md-8 col-xs-12">
 			<div class="form-group">
-				<input type="text" name="cliente" id="cliente" placeholder="Nombre o dni de cliente">
+				<label for="">Cliente</label>
+				<input type="text" name="cliente" id="cliente" placeholder="Nombre o dni de cliente" class="form-control">
 			</div>
+		</div>
+		<div class="col-lg-6 col-md-8 col-xs-12">
 			<div class="form-group">
-				<input type="text" name="clienteId" id="clienteId" disabled>
+				<label for="">DNI cliente:</label>
+				<input type="text" name="clienteId" id="clienteId" disabled class="form-control">
 			</div>
+		</div>
+		<div class="col-lg-4 col-md-6 col-xs-12">
 			<div class="form-group">
-				<input type="number" name="monto" id="monto" placeholder="0.00">
+				<label for="">Monto del préstamo</label>
+				<input type="number" name="monto" id="monto" placeholder="0.00" class="form-control">
 			</div>
+		</div>
+
+		<div class="col-lg-4 col-md-6 col-xs-12">
 			<div class="form-group">
-				<select name="caja" id="cajaId">
+				<label for="">Caja:</label>
+				<select name="caja" id="cajaId" class="form-control">
 					{% for caja in cajas %}
 						<option value="{{ caja.id }}">
 							{{ caja.nombre }}
 						</option>
 					{% endfor %}
 				</select>
-			</div>
+			</div>		
+		</div>
+
+		<div class="col-lg-4 col-md-6 col-xs-12">
 			<div class="form-group">
-				<select name="supervisor" id="supervisorId">
+				<label for="">Supervisor</label>
+				<select name="supervisor" id="supervisorId" class="form-control">
 					{% for supervisor in supervisores %}
 						<option value="{{ supervisor.id }}">
 							{{ supervisor.nombre }}
@@ -34,8 +50,14 @@
 					{% endfor %}
 				</select>
 			</div>
+		</div>
+
+		<div class="col-lg-12 col-md-8 col-xs-12">
+			<a href="#" id="guardar" class="btn btn-primary">Guardar</a>
+		</div>
 
 	</form>
 </div>
 
+<script src="{% static 'js/movimiento/prestamo/prestamoNuevo.js' %}"></script>
 {% endblock %}

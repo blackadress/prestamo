@@ -1,3 +1,6 @@
+// URL en uso:  clientes:/clientes/nuevo
+// html en uso: cliente/cliente-nuevo.html
+
 var mapa, infoWindow, marker;
 const csrfmiddlewaretoken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
 

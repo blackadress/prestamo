@@ -5,6 +5,7 @@ from django.http import JsonResponse
 
 from apps.movimientos.models import Prestamo
 from apps.empleado.models import Empleado
+from apps.caja.models import Caja
 
 import json
 
@@ -13,7 +14,15 @@ import json
 # PRESTAMO VISTAS
 @login_required
 def prestamoNuevoVista(request):
-    return render(request, 'movimientos/prestamo/prestamo-nuevo.html')
+    cajas = Caja.objects.all()
+    supervisores = Empleado.objects.filter(rol='supervisor', activo=True)
+
+    context = {
+        'cajas': cajas,
+        'supervisores': supervisores
+    }
+
+    return render(request, 'movimientos/prestamo/prestamo-nuevo.html', context)
 
 @login_required
 def prestamoListarVista(request):
