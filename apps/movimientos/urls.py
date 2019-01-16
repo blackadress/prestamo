@@ -11,5 +11,6 @@ urlpatterns = [
     path('prestamo/listar/', views.prestamoListarVista, name='prestamoListarVista'),
 
     #PRESTAMOS SERVICIOS
-    path('prestamo/api-nuevo/', views.prestamoNuevoServicio, name='prestamoNuevoServicio')
+    path('prestamo/api-nuevo/', views.prestamoNuevoServicio, name='prestamoNuevoServicio'),
+    path('prestamo/api-listar/', views.prestamoListarServicio, name='prestamoListarServicio')
 ]
