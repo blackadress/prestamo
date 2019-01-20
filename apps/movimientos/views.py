@@ -16,11 +16,14 @@ import json
 @login_required
 def prestamoNuevoVista(request):
     cajas = Caja.objects.all()
+    cajeros = Empleado.objects.filter(rol='cajero', activo=True)
     supervisores = Empleado.objects.filter(rol='supervisor', activo=True)
+    print(supervisores)
 
     context = {
         'cajas': cajas,
-        'supervisores': supervisores
+        'supervisores': supervisores,
+        'cajeros': cajeros
     }
 
     return render(request, 'movimientos/prestamo/prestamo-nuevo.html', context)
@@ -41,13 +44,16 @@ def prestamoNuevoServicio(request):
     body = json.loads(body_unicode)
     print(body)
 
-    # prestamo = Prestamo(
-    #     monto=body['monto'],
-    #     supervisor_id=body['supervisorId'],
-    #     cajero=cajero,
-    #     caja_id=body['cajaId'],
-    #     cliente_id=body['clienteId']
-    # )
+    prestamo = Prestamo(
+        montoPrestado=body['monto'],
+        interes=body['interes'],
+        montoPagado=0,
+        plazo=body['plazo'],
+        supervisor_id=body['supervisorId'],
+        cajero=cajero,
+        caja_id=body['cajaId'],
+        cliente_id=body['clienteId']
+    )
 
     # prestamo.save()
 

@@ -17,3 +17,6 @@ class Empleado(models.Model):
     rol = models.CharField(max_length=15, choices=ROLES_OPCIONES)
     activo = models.BooleanField(default=True)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s %s %s" % (self.nombres, self.apPaterno, self.apMaterno)

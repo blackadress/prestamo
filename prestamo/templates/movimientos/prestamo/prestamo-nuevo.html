@@ -40,6 +40,17 @@
 </style>
 
 <h1 class="text-center">Nuevo Préstamo</h1>
+<label for="ice-cream-choice">Choose a flavor:</label>
+<input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
+
+<datalist id="ice-cream-flavors">
+  <option value="Chocolate"></option>
+    <option value="Coconut"></option>
+    <option value="Mint"></option>
+    <option value="Strawberry"></option>
+    <option value="Vanilla"></option>
+</datalist>
+
 
 <div class="col-lg-12 col-md-12 col-xs-12">
 	<form role='form' method="POST" autocomplete="off">
@@ -47,7 +58,9 @@
 		<div class="col-lg-6 col-md-8 col-xs-12">
 			<div class="form-group autocomplete">
 				<label for="">Cliente</label>
-				<input type="text" name="cliente" id="cliente" placeholder="Nombre o dni de cliente" class="form-control">
+				<input type="text" name="cliente" id="cliente" placeholder="Nombre o dni de cliente" class="form-control" list='nombresAutocomp' oninput='onInput()'>
+				<datalist id='nombresAutocomp'>
+				</datalist>
 			</div>
 		</div>
 		<div class="col-lg-6 col-md-8 col-xs-12">
@@ -62,27 +75,49 @@
 				<input type="number" name="monto" id="monto" placeholder="0.00" class="form-control">
 			</div>
 		</div>
-
+		<div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="form-group">
+				<label for="">Interés</label>
+				<input type="number" name="interes" id="interes" placeholder="2%" class="form-control">
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="form-group">
+				<label for="">Plazo</label>
+				<input type="date" name="plazo" id="plazo" class="form-control">
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="form-group">
+				<label for="">Cajero</label>
+				<select name="cajero" id="cajero" class="form-control">
+					{% for cajero in cajeros %}
+						<option value="{{ cajero.id }}">
+							{{ cajero }}
+						</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 		<div class="col-lg-4 col-md-6 col-xs-12">
 			<div class="form-group">
 				<label for="">Caja:</label>
 				<select name="caja" id="cajaId" class="form-control">
 					{% for caja in cajas %}
 						<option value="{{ caja.id }}">
-							{{ caja.nombre }}
+							{{ caja }}
 						</option>
 					{% endfor %}
 				</select>
 			</div>		
 		</div>
-
 		<div class="col-lg-4 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="">Supervisor</label>
+				<label for="">Supervisor:</label>
 				<select name="supervisor" id="supervisorId" class="form-control">
 					{% for supervisor in supervisores %}
 						<option value="{{ supervisor.id }}">
-							{{ supervisor.nombre }}
+							{{ supervisor }}
 						</option>
 					{% endfor %}
 				</select>
